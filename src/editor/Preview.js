@@ -2,7 +2,8 @@ import marked from 'marked'
 
 const Preview = ({ body }) => (
   <div className="editor__preview">
-    <div className="body" dangerouslySetInnerHTML={ { __html: marked(body, { sanitize: true }) }}></div>
+    <h2 className="subtitle">Preview</h2>
+    <div className="body content" dangerouslySetInnerHTML={ { __html: marked(body, { sanitize: true }) }}></div>
   </div>
 )
 

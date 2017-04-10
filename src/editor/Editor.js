@@ -1,6 +1,8 @@
 import Component from 'inferno-component'
 import Input from './Input'
 import Preview from './Preview'
+import HelpText from './HelpText'
+import './editor.css'
 
 class Editor extends Component {
   constructor(props) {
@@ -8,6 +10,12 @@ class Editor extends Component {
     this.state = {
       document: ''
     }
+  }
+
+  componentDidMount() {
+    this.setState({
+      document: HelpText.text
+    })
   }
 
   onInput = (e) => {
@@ -23,10 +31,12 @@ class Editor extends Component {
   render() {
     const { document } = this.state
     return (
-      <div className="editor">
+      <div className="editor-container">
         <button onClick={this.createDocument}>Save</button>
-        <Input onInput={this.onInput} value={document} />
-        <Preview body={document} />
+        <div className="editor">
+          <Input onInput={this.onInput} value={document} />
+          <Preview body={document} />
+        </div>
       </div>
     )
   }
