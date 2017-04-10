@@ -1,0 +1,25 @@
+{
+  "name": "igetmarkeddown",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "inferno-scripts": "2.0.1"
+  },
+  "dependencies": {
+    "babel-plugin-inferno": "^3.1.0",
+    "dotenv": "^4.0.0",
+    "inferno": "^1.6.2",
+    "inferno-component": "^1.6.2",
+    "koa": "^2.2.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.1.1",
+    "koa-sendfile": "^2.0.0",
+    "koa-static": "^3.0.0"
+  },
+  "scripts": {
+    "start": "inferno-scripts start",
+    "build": "inferno-scripts build",
+    "test": "inferno-scripts test --env=jsdom",
+    "eject": "inferno-scripts eject"
+  }
+}
