@@ -1,5 +1,5 @@
-import { render } from 'inferno';
-import App from './App';
-import './index.css';
+import { render } from 'inferno'
+import routes from './config/routes'
+import './index.css'
 
-render(<App />, document.getElementById('app'));
+render(routes, document.getElementById('app'))
