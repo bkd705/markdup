@@ -21,16 +21,13 @@ app.use(bodyParser())
 app.use(router.routes())
 app.use(router.allowedMethods())
 
-// Enable default middleware
-require('./middleware')(app)
+// Serve routes
+require('./routes')(router)
 
 app.use(async function (ctx, next) {
   await sendFile(ctx, path.join(__dirname, '../build/index.html'))
   await next()
 })
-
-// Serve routes
-require('./routes')(router)
 
 const port = process.env.PORT || process.env.SERVER_PORT
 

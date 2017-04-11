@@ -1,5 +1,5 @@
 {
-  "name": "igetmarkeddown",
+  "name": "markdup",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
@@ -18,11 +18,14 @@
     "koa-sendfile": "^2.0.0",
     "koa-static": "^3.0.0",
     "marked": "^0.3.6"
+    "mongodb": "^2.2.25",
+    "mongoose": "^4.9.4"
   },
   "scripts": {
     "start": "inferno-scripts start",
     "build": "inferno-scripts build",
     "test": "inferno-scripts test --env=jsdom",
-    "eject": "inferno-scripts eject"
+    "eject": "inferno-scripts eject",
+    "server": "node http/server.js"
   }
 }
