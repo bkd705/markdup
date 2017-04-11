@@ -1,5 +1,5 @@
 {
-  "name": "igetmarkeddown",
+  "name": "markdup",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
@@ -10,16 +10,20 @@
     "dotenv": "^4.0.0",
     "inferno": "^1.6.2",
     "inferno-component": "^1.6.2",
+    "jsonwebtoken": "^7.3.0",
     "koa": "^2.2.0",
     "koa-bodyparser": "^4.2.0",
     "koa-router": "^7.1.1",
     "koa-sendfile": "^2.0.0",
-    "koa-static": "^3.0.0"
+    "koa-static": "^3.0.0",
+    "mongodb": "^2.2.25",
+    "mongoose": "^4.9.4"
   },
   "scripts": {
     "start": "inferno-scripts start",
     "build": "inferno-scripts build",
     "test": "inferno-scripts test --env=jsdom",
-    "eject": "inferno-scripts eject"
+    "eject": "inferno-scripts eject",
+    "server": "node http/server.js"
   }
 }
