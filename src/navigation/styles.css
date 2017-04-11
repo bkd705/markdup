@@ -1,0 +1,14 @@
+nav {
+  margin-bottom: 1em;
+}
+
+.nav-left {
+  overflow: visible;
+  overflow-x: visible;
+}
+
+.nav-item > h1 {
+  font-weight: 500;
+  font-size: 20px;
+  color: black;
+}

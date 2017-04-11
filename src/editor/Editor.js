@@ -28,11 +28,19 @@ class Editor extends Component {
     console.log(this.state)
   }
 
+  shareDocument = () => {
+    console.log(this.state)
+  }
+
   render() {
     const { document } = this.state
     return (
       <div className="editor-container">
-        <button onClick={this.createDocument}>Save</button>
+        <div className="button-bar">
+          <a onClick={this.createDocument} className="button">Save</a>
+          <a onClick={this.shareDocument} className="button">Share</a>
+        </div>
+
         <div className="editor">
           <Input onInput={this.onInput} value={document} />
           <Preview body={document} />

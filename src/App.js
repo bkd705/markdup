@@ -1,10 +1,16 @@
 import Component from 'inferno-component'
 
+import NavigationBar from './navigation/NavigationBar'
+
 class App extends Component {
   render() {
     return (
       <div className="app">
-        {this.props.children}
+        <NavigationBar />
+
+        <div className="body-container">
+          {this.props.children}
+        </div>    
       </div>
     )
   }

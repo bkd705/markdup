@@ -1,9 +1,12 @@
+.editor-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .editor {
-  max-width: 85%;
-  margin: 0 auto;
+  max-width: 100%;
   display: flex;
   flex-direction: row;
-  position: relative;
 }
 
 .editor__preview, .editor__input {
@@ -15,8 +18,32 @@
 .editor__input textarea {
   font-size: 16px;
   font-weight: 300;
-  border: 0;
+  border-radius: 3px;
+  border-color: lightgrey;
+  padding: 0.5em;
   background: none;
   width: 100%;
   height: calc(100vh - 100px);
+}
+
+.editor__preview > .body {
+  border-radius: 3px;
+  border-color: lightgrey;
+  height: calc(100vh - 100px);
+  padding: 0.5em;
+}
+
+.button-bar {
+  justify-content: flex-end;
+  text-align: right;
+  margin-right: 1em;
+}
+
+.button-bar > a {
+  margin-right: 0.5em;
+}
+
+.subtitle {
+  font-size: 26px;
+  font-weight: 400;
 }

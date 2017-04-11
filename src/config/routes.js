@@ -4,6 +4,7 @@ import createBrowserHistory from 'history/createBrowserHistory'
 import App from '../App'
 import Editor from '../editor/Editor'
 import Viewer from '../viewer/Viewer'
+import NoMatch from '../no-match/NoMatch'
 
 const browserHistory = createBrowserHistory()
 
@@ -13,6 +14,7 @@ const routes = (
       <IndexRoute component={Editor} />
       <Route path="/:id" component={Viewer} />
       <Route path="/:id/edit" component={Editor} />
+      <Route path="/:id/*" component={NoMatch} />
       {/* <Route path="/:id/delete" component={Delete} /> */}
     </Route>
   </Router>
