@@ -1,6 +1,7 @@
 .editor-container {
   display: flex;
   flex-direction: column;
+  margin-top: 25px;
 }
 
 .editor {
@@ -23,13 +24,14 @@
   padding: 0.5em;
   background: none;
   width: 100%;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 165px);
 }
 
 .editor__preview > .body {
   border-radius: 3px;
   border-color: lightgrey;
-  height: calc(100vh - 100px);
+  max-height: calc(100vh - 100px);
+  overflow: scroll;
   padding: 0.5em;
 }
 
@@ -46,4 +48,13 @@
 .subtitle {
   font-size: 26px;
   font-weight: 400;
+}
+
+@media screen and (max-width: 640px) {
+  .editor {
+    flex-direction: column;
+  }
+  .editor__preview, .editor__input {
+    width: 100%;
+  }
 }

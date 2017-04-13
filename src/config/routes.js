@@ -6,7 +6,8 @@ import Editor from '../editor/Editor'
 import Viewer from '../viewer/Viewer'
 import NoMatch from '../no-match/NoMatch'
 
-const browserHistory = createBrowserHistory()
+export const browserHistory = createBrowserHistory()
+
 
 const routes = (
   <Router history={browserHistory}>

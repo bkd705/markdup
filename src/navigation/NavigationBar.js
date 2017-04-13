@@ -10,7 +10,6 @@ class NavigationBar extends Component {
             <a className="nav-item">
               <h1>{"Mark'd Up"}</h1>
             </a>
-            <a className="nav-item is-tab is-hidden-mobile is-active">Home</a>
           </div>
           <span className="nav-toggle">
             <span></span>
@@ -18,7 +17,7 @@ class NavigationBar extends Component {
             <span></span>
           </span>
           <div className="nav-right nav-menu">
-            <a className="nav-item is-tab">My Markdowns</a>
+            <a className="nav-item is-tab">Login</a>
           </div>
         </div>
       </nav>
