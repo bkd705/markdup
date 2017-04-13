@@ -19,14 +19,14 @@ module.exports = class MarkdownController {
     // Get owner (if available)
     const info = { content }
     if (!user.error) {
-      info.owner = user.id
+      info.owner = user.uid
     }
 
     // Save markdown
     const newMarkdown = new Markdown(info)
     const res = await newMarkdown.save()
     if (!res) {
-      return SendError('CREATE_MARKDOWN_FAILURE')
+      return SendError(ctx, 404, 'CREATE_MARKDOWN_FAILURE')
     }
 
     // Return success
@@ -47,11 +47,26 @@ module.exports = class MarkdownController {
 
     const md = await Markdown.findOne({ _id: id }).exec()
     if (!md) {
-      return SendError('FIND_MARKDOWN_FAILURE')
+      return SendError(ctx, 404, 'FIND_MARKDOWN_FAILURE')
     }
 
     ctx.body = JRes.success('FIND_MARKDOWN_SUCCESS', {
       markdown: Helpers.transformObj(md, [
+        '_id', 'owner', 'content', 'updated_at', 'created_at'
+      ])
+    })
+  }
+
+  static async findByUid(ctx, next) {
+    const uid = ctx.params.uid
+
+    const mds = await Markdown.find({ owner: uid }).exec()
+    if (!mds) {
+      return SendError(ctx, 404, 'FIND_USER_MARKDOWN_FAILURE')
+    }
+
+    ctx.body = JRes.success('FIND_USER_MARKDOWN_SUCCESS', {
+      markdowns: Helpers.transformArray(mds, [
         '_id', 'owner', 'content', 'updated_at', 'created_at'
       ])
     })
@@ -68,7 +83,7 @@ module.exports = class MarkdownController {
     const content = ctx.request.body.content
 
     // Return if not owner of markdown
-    if (user.error) return SendError(user.error)
+    if (user.error) return SendError(ctx, 403, user.error)
 
     // Update markdown
     const updated = await Markdown.update({ _id: id, owner: user.id }, {
@@ -77,7 +92,7 @@ module.exports = class MarkdownController {
     }).exec()
 
     if (!updated) {
-      return SendError('UPDATE_MARKDOWN_FAILURE')
+      return SendError(ctx, 400, 'UPDATE_MARKDOWN_FAILURE')
     }
 
     ctx.body = JRes.success('UPDATE_MARKDOWN_SUCCESS', {
@@ -97,11 +112,11 @@ module.exports = class MarkdownController {
     const user = ctx.state.user
 
     // Return if not owner of markdown
-    if (user.error) return SendError(user.error)
+    if (user.error) return SendError(ctx, 403, user.error)
 
     const deleted = await Markdown.deleteOne({ _id: id, owner: user.id }).exec()
     if (!deleted) {
-      return SendError('DELETE_MARKDOWN_FAILURE')
+      return SendError(ctx, 400, 'DELETE_MARKDOWN_FAILURE')
     }
 
     ctx.body = JRes.success('DELETE_MARKDOWN_SUCCESS')
