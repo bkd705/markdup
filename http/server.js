@@ -14,6 +14,13 @@ dotenv.config()
 const app = new koa()
 const router = koaRouter()
 
+app.use(async function (ctx, next) {
+  ctx.set('Access-Control-Allow-Origin', '*')
+  ctx.set('Access-Control-Allow-Headers', 'Authorization,Content-Type')
+
+  await next()
+})
+
 app.use(serve(path.join(__dirname, '../build')))
 
 // Enable bodyparser and router
