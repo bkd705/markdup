@@ -1,0 +1,8 @@
+.meta-container {
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+
+.meta-container p {
+  padding: 0.5em;
+}

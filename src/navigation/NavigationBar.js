@@ -21,11 +21,11 @@ class NavigationBar extends Component {
     }
 
     return (
-      <nav className="nav has-shadow">
+      <nav className="nav">
         <div className="container">
           <div className="nav-left">
             <a className="nav-item">
-              <h1>{"Mark'd Up"}</h1>
+              <h1>Mark'd Up</h1>
             </a>
           </div>
           <span className="nav-toggle">

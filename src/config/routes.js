@@ -1,7 +1,7 @@
 import { Router, Route, IndexRoute } from 'inferno-router'
 import createBrowserHistory from 'history/createBrowserHistory'
 
-import App from '../App'
+import Layout from '../layouts'
 import Editor from '../editor/Editor'
 import Viewer from '../viewer/Viewer'
 import NoMatch from '../no-match/NoMatch'
@@ -11,12 +11,11 @@ export const browserHistory = createBrowserHistory()
 
 const routes = (
   <Router history={browserHistory}>
-    <Route component={App}>
+    <Route component={Layout}>
       <IndexRoute component={Editor} />
-      <Route path="/:id" component={Viewer} />
-      <Route path="/:id/edit" component={Editor} />
-      <Route path="/:id/*" component={NoMatch} />
-      {/* <Route path="/:id/delete" component={Delete} /> */}
+      <Route path="/md/:id" component={Viewer} />
+      <Route path="/md/:id/edit" component={Editor} />
+      <Route path="/md/:id/*" component={NoMatch} />
     </Route>
   </Router>
 )

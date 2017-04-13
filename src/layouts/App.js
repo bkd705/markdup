@@ -1,6 +1,6 @@
 import Component from 'inferno-component'
 
-import NavigationBar from './navigation/NavigationBar'
+import NavigationBar from '../navigation/NavigationBar'
 
 class App extends Component {
   render() {

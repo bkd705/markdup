@@ -1,7 +1,9 @@
 import Component from 'inferno-component'
+import { browserHistory as history } from '../config/routes'
 import Input from './Input'
 import Preview from './Preview'
 import HelpText from './HelpText'
+import * as api from '../api'
 import './editor.css'
 
 class Editor extends Component {
@@ -25,34 +27,14 @@ class Editor extends Component {
   }
 
   createDocument = () => {
-    const headers = {}
     const user = this.getUser()
 
-    // Set authorization header, if available
-    if (user) {
-      headers['Authorization'] = 'Bearer ' + user.stsTokenManager.accessToken
-    }
-
-    // Set content type header
-    headers['Content-Type'] = 'application/json'
-
-    // Send request
-    fetch('http://localhost:8080/api/v1/markdowns', {
-      method: 'POST',
-      headers: headers,
-      body: JSON.stringify({ content: this.state.document })
-    })
-    .then(res => res.json())
-    .then(body => {
-      console.log(body)
-    })
-    .catch(error => {
-      console.log(error)
-    })
-  }
-
-  shareDocument = () => {
-    console.log(this.state)
+    api.create(this.state.document, user)
+      .then(res => {
+        const id = res.data.markdown._id
+        history.push(`/md/${id}`)
+      })
+      .catch(err => console.log(err))
   }
 
   getUser() {
@@ -73,7 +55,6 @@ class Editor extends Component {
       <div className="editor-container">
         <div className="button-bar">
           <a onClick={this.createDocument} className="button">Save</a>
-          <a onClick={this.shareDocument} className="button">Share</a>
         </div>
 
         <div className="editor">
